@@ -57,6 +57,10 @@ class TestWordLadder(unittest.TestCase):
         self.assertEqual(-1, ladder_length('rahul', 'coder', ['blahh',
                                            'blhah']))
 
+        # not possible to reach again !
+        self.assertEqual(-1, ladder_length('shortWord', 'longerWord',
+                                           ['words']))
+
 
 if __name__ == "__main__":
     unittest.main()
