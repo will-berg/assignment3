@@ -11,7 +11,8 @@ from algorithms.matrix import (
     spiral_traversal,
     sudoku_validator,
     sum_sub_squares,
-    sort_matrix_diagonally
+    sort_matrix_diagonally,
+	sparse_mul
 )
 import unittest
 
@@ -385,6 +386,38 @@ class TestSortMatrixDiagonally(unittest.TestCase):
             [1, 2, 2, 2],
             [1, 2, 3, 3]
         ])
+
+
+"""
+Requirements to test:
+1. If any inputs are None, the result should be None
+2. An exception should be raised if the dimensions are not compatible for multiplication
+3. Valid inputs (not None) with compatible dimensions should give the correct result
+"""
+class TestSparseMul(unittest.TestCase):
+	def test_sparse_mul_valid(self):
+		A = [[1, 0, 0],[-1, 0, 3]]
+		B = [[7, 0, 0 ],[ 0, 0, 0 ],[ 0, 0, 1 ]]
+
+		self.assertEqual(sparse_mul.multiply1(A, B), [
+			[7, 0, 0],
+			[-7, 0, 3]
+		])
+
+	def test_sparse_mul_invalid(self):
+		A, B = None, None
+		self.assertEqual(sparse_mul.multiply1(A, B), None)
+		A, B = [[1, 0, 0],[-1, 0, 3]], None
+		self.assertEqual(sparse_mul.multiply1(A, B), None)
+		A, B = None, [[1, 0, 0],[-1, 0, 3]]
+		self.assertEqual(sparse_mul.multiply1(A, B), None)
+
+		A = [[1, 0, 0],[-1, 0, 3]]
+		B = [[7, 0, 0 ],[ 0, 0, 0 ]]
+		self.assertRaises(Exception, sparse_mul.multiply1, A, B)
+		A = [[1, 0],[-1, 0]]
+		B = [[7, 0, 0 ],[ 0, 0, 0 ],[ 0, 0, 1 ]]
+		self.assertRaises(Exception, sparse_mul.multiply1, A, B)
 
 
 if __name__ == "__main__":
