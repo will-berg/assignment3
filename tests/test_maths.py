@@ -555,6 +555,17 @@ class TestChineseRemainderSolver(unittest.TestCase):
         with self.assertRaises(Exception):
             chinese_remainder_theorem.solve_chinese_remainder(num, rem)
 
+    def test_non_equal_length(self):
+        num = [1, 2]
+        rem = [1, 2, 3]
+        with self.assertRaises(Exception):
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem)
+
+    def test_less_than_one_num(self):
+        num = [1, 0, 1]
+        rem = [1, 2, 3]
+        with self.assertRaises(Exception):
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem)
 
 if __name__ == "__main__":
     unittest.main()
