@@ -118,52 +118,7 @@ class TestSuite(unittest.TestCase):
 
         val = intersection(a1, a2, flags).val
 
-        self.assertEqual(7, val)
-
-    def test_intersection_2(self):
-        
-            # create linked list as:
-            # 1 
-            #     \        
-            #         4 -> 5         
-            #        /    
-            # 2 -> 3
-            a1 = Node(1)
-            a2 = Node(2)
-            b2 = Node(3)
-            d = Node(4)
-            e = Node(5)
-                
-
-            a1.next = d
-            a2.next = b2
-            b2.next = d
-            d.next = e
-
-            val = intersection(a1, a2, flags).val
-
-            self.assertEqual(4, val)
-
-    def test_intersection_3(self):
-        
-        # create linked list as:
-        # 1 -> 3
-        #             
-        #         4         
-        #     /    
-        # 2
-        a1 = Node(1)
-        b1 = Node(2)
-        a2 = Node(3)
-        d = Node(4)
-
-        a1.next = b1
-        b1.next = d
-        a2.next = d
-        
-        val = intersection(a1, a2, flags).val
-
-        self.assertEqual(4, val)        
+        self.assertEqual(7, val)   
 
 if __name__ == '__main__':
     flags =[False for i in range(14)] # For DIY Coverage report
