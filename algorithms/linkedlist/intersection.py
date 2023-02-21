@@ -78,6 +78,7 @@ def intersection(h1, h2,flags):
             shorter = shorter.next
 
         print(flags)
+        
         i = 0
         for flag in flags:
             if flag:
