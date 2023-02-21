@@ -251,11 +251,14 @@ class TestPatternMatch(unittest.TestCase):
         string3 = "xyzabcxzyabc"
         pattern4 = ""
         string4 = "a"
+        pattern5 = "ered"
+        string5 = "redblueredblue"
 
         self.assertTrue(pattern_match(pattern1, string1))
         self.assertTrue(pattern_match(pattern2, string2))
         self.assertFalse(pattern_match(pattern3, string3))
         self.assertFalse(pattern_match(pattern4, string4))
+        self.assertFalse(pattern_match(pattern5, string5))
 
 
 class TestGenerateParenthesis(unittest.TestCase):
@@ -322,37 +325,37 @@ class TestPermuteUnique(unittest.TestCase):
         self.assertEqual(sorted(permute_unique(nums3)), sorted(answer3))
 
 
-# class TestPermute(unittest.TestCase):
+class TestPermute(unittest.TestCase):
 
-#     def test_permute(self):
-#         nums1 = [1, 2, 3, 4]
-#         answer1 = [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1],
-#                    [1, 3, 2, 4], [3, 1, 2, 4], [3, 2, 1, 4], [3, 2, 4, 1],
-#                    [1, 3, 4, 2], [3, 1, 4, 2], [3, 4, 1, 2], [3, 4, 2, 1],
-#                    [1, 2, 4, 3], [2, 1, 4, 3], [2, 4, 1, 3], [2, 4, 3, 1],
-#                    [1, 4, 2, 3], [4, 1, 2, 3], [4, 2, 1, 3], [4, 2, 3, 1],
-#                    [1, 4, 3, 2], [4, 1, 3, 2], [4, 3, 1, 2], [4, 3, 2, 1]]
-#         self.assertEqual(sorted(permute(nums1)), sorted(answer1))
+    def test_permute(self):
+        nums1 = [1, 2, 3, 4]
+        answer1 = [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1],
+                   [1, 3, 2, 4], [3, 1, 2, 4], [3, 2, 1, 4], [3, 2, 4, 1],
+                   [1, 3, 4, 2], [3, 1, 4, 2], [3, 4, 1, 2], [3, 4, 2, 1],
+                   [1, 2, 4, 3], [2, 1, 4, 3], [2, 4, 1, 3], [2, 4, 3, 1],
+                   [1, 4, 2, 3], [4, 1, 2, 3], [4, 2, 1, 3], [4, 2, 3, 1],
+                   [1, 4, 3, 2], [4, 1, 3, 2], [4, 3, 1, 2], [4, 3, 2, 1]]
+        self.assertEqual(sorted(permute(nums1)), sorted(answer1))
 
-#         nums2 = [1, 2, 3]
-#         answer2 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2],
-#                    [1, 3, 2], [1, 2, 3]]
-#         self.assertEqual(sorted(permute(nums2)), sorted(answer2))
+        nums2 = [1, 2, 3]
+        answer2 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2],
+                   [1, 3, 2], [1, 2, 3]]
+        self.assertEqual(sorted(permute(nums2)), sorted(answer2))
 
-#     def test_permute_recursive(self):
-#         nums1 = [1, 2, 3, 4]
-#         answer1 = [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1],
-#                    [1, 3, 2, 4], [3, 1, 2, 4], [3, 2, 1, 4], [3, 2, 4, 1],
-#                    [1, 3, 4, 2], [3, 1, 4, 2], [3, 4, 1, 2], [3, 4, 2, 1],
-#                    [1, 2, 4, 3], [2, 1, 4, 3], [2, 4, 1, 3], [2, 4, 3, 1],
-#                    [1, 4, 2, 3], [4, 1, 2, 3], [4, 2, 1, 3], [4, 2, 3, 1],
-#                    [1, 4, 3, 2], [4, 1, 3, 2], [4, 3, 1, 2], [4, 3, 2, 1]]
-#         self.assertEqual(sorted(permute_recursive(nums1)), sorted(answer1))
+    def test_permute_recursive(self):
+        nums1 = [1, 2, 3, 4]
+        answer1 = [[1, 2, 3, 4], [2, 1, 3, 4], [2, 3, 1, 4], [2, 3, 4, 1],
+                   [1, 3, 2, 4], [3, 1, 2, 4], [3, 2, 1, 4], [3, 2, 4, 1],
+                   [1, 3, 4, 2], [3, 1, 4, 2], [3, 4, 1, 2], [3, 4, 2, 1],
+                   [1, 2, 4, 3], [2, 1, 4, 3], [2, 4, 1, 3], [2, 4, 3, 1],
+                   [1, 4, 2, 3], [4, 1, 2, 3], [4, 2, 1, 3], [4, 2, 3, 1],
+                   [1, 4, 3, 2], [4, 1, 3, 2], [4, 3, 1, 2], [4, 3, 2, 1]]
+        self.assertEqual(sorted(permute_recursive(nums1)), sorted(answer1))
 
-#         nums2 = [1, 2, 3]
-#         answer2 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2],
-#                    [1, 3, 2], [1, 2, 3]]
-#         self.assertEqual(sorted(permute_recursive(nums2)), sorted(answer2))
+        nums2 = [1, 2, 3]
+        answer2 = [[3, 2, 1], [2, 3, 1], [2, 1, 3], [3, 1, 2],
+                   [1, 3, 2], [1, 2, 3]]
+        self.assertEqual(sorted(permute_recursive(nums2)), sorted(answer2))
 
 
 class TestSubsetsUnique(unittest.TestCase):
