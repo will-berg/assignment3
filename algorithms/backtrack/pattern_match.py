@@ -14,13 +14,13 @@ You may assume both pattern and str contains only lowercase letters.
 """
 
 
-def pattern_match(pattern, string):
+def pattern_match(pattern, string, flags):
     """
     :type pattern: str
     :type string: str
     :rtype: bool
     """
-    def backtrack(pattern, string, dic):
+    def backtrack(pattern, string, dic, flags):
         if len(pattern) == 0 and len(string) > 0:
             flags[0] = 1
             return False
@@ -37,7 +37,7 @@ def pattern_match(pattern, string):
             if pattern[0] not in dic and string[:end] not in dic.values():
                 flags[4] = 1
                 dic[pattern[0]] = string[:end]
-                if backtrack(pattern[1:], string[end:], dic):
+                if backtrack(pattern[1:], string[end:], dic, flags):
                     flags[5] = 1
                     return True
                 else:
@@ -45,7 +45,7 @@ def pattern_match(pattern, string):
                 del dic[pattern[0]]
             elif pattern[0] in dic and dic[pattern[0]] == string[:end]:
                 flags[7] = 1
-                if backtrack(pattern[1:], string[end:], dic):
+                if backtrack(pattern[1:], string[end:], dic, flags):
                     flags[8] = 1
                     return True
                 else:
@@ -54,14 +54,6 @@ def pattern_match(pattern, string):
                 flags[10] = 1
         flags[11] = 1
         return False
-    flags = [0 for i in range(12)]
-    return_value = backtrack(pattern, string, {})
-    print(flags)
-    i = 0
-    for flag in flags:
-        if flag:
-            i += 1
-
-    ratio =  i / len(flags)
-    
+    return_value = backtrack(pattern, string, {}, flags)
+    flags[12] = 1
     return return_value

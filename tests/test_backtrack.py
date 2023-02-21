@@ -243,6 +243,7 @@ class TestGenerateAbbreviations(unittest.TestCase):
 class TestPatternMatch(unittest.TestCase):
 
     def test_pattern_match(self):
+        flags = [0 for i in range(13)]
         pattern1 = "abab"
         string1 = "redblueredblue"
         pattern2 = "aaaa"
@@ -250,9 +251,17 @@ class TestPatternMatch(unittest.TestCase):
         pattern3 = "aabb"
         string3 = "xyzabcxzyabc"
 
-        self.assertTrue(pattern_match(pattern1, string1))
-        self.assertTrue(pattern_match(pattern2, string2))
-        self.assertFalse(pattern_match(pattern3, string3))
+        self.assertTrue(pattern_match(pattern1, string1, flags))
+        self.assertTrue(pattern_match(pattern2, string2, flags))
+        self.assertFalse(pattern_match(pattern3, string3, flags))
+
+        print(flags)
+        i = 0
+        for flag in flags:
+            if flag:
+                i += 1
+        ratio =  i / len(flags)
+        print(ratio)
 
 
 class TestGenerateParenthesis(unittest.TestCase):
