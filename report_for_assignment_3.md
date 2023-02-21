@@ -76,7 +76,7 @@ Did it build and run as documented?
 
 >Manual branch coverage for `summarize_range` is implemented on the [/feature/coverage-maze-search](https://github.com/will-berg/assignment3/commits/feature/coverage-maze-search) branch, and the DIY in [/feature/improve-coverage-maze-search](https://github.com/will-berg/assignment3/commits/feature/improve-coverage-maze-search) branch. The coverage went up from 0.75 to 1.0
 
->Manual branch coverage for `intersection` is implemented on the [link]() and improve coverage is implemented on [link](). The branch coverage went up from 0.7 to 1.0 before implementing else-statements for each if-statement. After it implementing else-statements the manual branch coverage was ~0.93.
+>Manual branch coverage for `intersection` is implemented on the [intersection-diy](https://github.com/will-berg/assignment3/tree/intersection-diy) and improve coverage is implemented on [intersection-coverage](https://github.com/will-berg/assignment3/tree/intersection-coverage). The branch coverage went up from 0.7 to 1.0 before implementing else-statements for each if-statement. After it implementing else-statements the manual branch coverage was ~0.93.
 
 >Manual branch coverage tool for `solve_chinese_remainder` is implemented on branch [issue#9](https://github.com/will-berg/assignment3/tree/issue%239) and the two tests that increases the coverage to 100% on the branch [issue#10](https://github.com/will-berg/assignment3/tree/issue%2310).
 
