@@ -523,6 +523,8 @@ class TestNumberOfPerfectSquares(unittest.TestCase):
 
 
 class TestChineseRemainderSolver(unittest.TestCase):
+    flags = [False for _ in range(17)] 
+
     def test_k_three(self):
         # Example which should give the answer 143
         # which is the smallest possible x that
@@ -530,7 +532,7 @@ class TestChineseRemainderSolver(unittest.TestCase):
         num = [3, 7, 10]
         rem = [2, 3, 3]
         self.assertEqual(chinese_remainder_theorem.
-                         solve_chinese_remainder(num, rem), 143)
+                         solve_chinese_remainder(num, rem, self.flags), 143)
 
     def test_k_five(self):
         # Example which should give the answer 3383
@@ -539,7 +541,7 @@ class TestChineseRemainderSolver(unittest.TestCase):
         num = [3, 5, 7, 11, 26]
         rem = [2, 3, 2, 6, 3]
         self.assertEqual(chinese_remainder_theorem.
-                         solve_chinese_remainder(num, rem), 3383)
+                         solve_chinese_remainder(num, rem, self.flags), 3383)
 
     def test_exception_non_coprime(self):
         # There should be an exception when all
@@ -547,13 +549,27 @@ class TestChineseRemainderSolver(unittest.TestCase):
         num = [3, 7, 10, 14]
         rem = [2, 3, 3, 1]
         with self.assertRaises(Exception):
-            chinese_remainder_theorem.solve_chinese_remainder(num, rem)
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem, self.flags)
 
     def test_empty_lists(self):
         num = []
         rem = []
         with self.assertRaises(Exception):
-            chinese_remainder_theorem.solve_chinese_remainder(num, rem)
+            chinese_remainder_theorem.solve_chinese_remainder(num, rem, self.flags)
+
+    @classmethod
+    def tearDownClass(self):
+        coverage = 0
+        flag_output = ""
+        for i in range(len(self.flags)):
+            if self.flags[i]:
+                coverage += 1
+                flag_output += "(" + str(i) + " T) "
+            else:
+                flag_output += "(" + str(i) + " F) "
+        cov_ratio = coverage / len(self.flags)
+        print("Branches covered: ", flag_output)
+        print("Coverage %: ", cov_ratio*100)
 
 
 if __name__ == "__main__":

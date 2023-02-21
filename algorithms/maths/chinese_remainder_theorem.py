@@ -4,7 +4,7 @@ Solves system of equations using the chinese remainder theorem if possible.
 from typing import List
 from algorithms.maths.gcd import gcd
 
-def solve_chinese_remainder(nums : List[int], rems : List[int]):
+def solve_chinese_remainder(nums : List[int], rems : List[int], flags : List[bool]):
 
     """
     Computes the smallest x that satisfies the chinese remainder theorem
@@ -19,53 +19,54 @@ def solve_chinese_remainder(nums : List[int], rems : List[int]):
     returns x: the smallest value for x that satisfies the system of equations
     """
 
-    """
-    Manual branch coverage flags
-    """
-    flags = [False for i in range(9)]
-
     if not len(nums) == len(rems):
         flags[0] = True
         print_flags(flags)
         raise Exception("nums and rems should have equal length")
-    if not len(nums) > 0:
+    else:
         flags[1] = True
-        print_flags(flags)
-        raise Exception("Lists nums and rems need to contain at least one element")
-    for num in nums:
+
+    if not len(nums) > 0:
         flags[2] = True
-        if not num > 1:
-            flags[3] = True
-            print_flags(flags)
-            raise Exception("All numbers in nums needs to be > 1")
-    if not _check_coprime(nums):
+        raise Exception("Lists nums and rems need to contain at least one element")
+    else:
+        flags[3] = True
+
+    for num in nums:
         flags[4] = True
-        print_flags(flags)
+        if not num > 1:
+            flags[6] = True
+            raise Exception("All numbers in nums needs to be > 1")
+        else:
+            flags[7] = True
+    flags[5] = True
+
+    if not _check_coprime(nums):
+        flags[8] = True
         raise Exception("All pairs of numbers in nums are not coprime")
+    else:
+        flags[9] = True
+
     k = len(nums)
     x = 1
     while True:
-        flags[5] = True
+        flags[10] = True
         i = 0
         while i < k:
-            flags[6] = True
+            flags[11] = True
             if x % nums[i] != rems[i]:
-                flags[7] = True
+                flags[13] = True
                 break
+            else:
+                flags[14] = True
             i += 1
+            flags[12] = True
         if i == k:
-            flags[8] = True
-            print_flags(flags)
+            flags[15] = True
             return x
+        else :
+            flags[16] = True
         x += 1
-
-def print_flags(flags):
-    coverage = 0
-    for i in range(len(flags)):
-        if flags[i]:
-            coverage += 1
-    cov_ratio = coverage / len(flags)
-    print("Branch cov: ", cov_ratio)
 
 def _check_coprime(list_to_check : List[int]):
     for ind, num in enumerate(list_to_check):
