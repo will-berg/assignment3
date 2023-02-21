@@ -70,7 +70,7 @@ Did it build and run as documented?
 > After implementing tests that check these requirements, 100% branch coverage was achieved. The tests are implemented on the branch `sparse_mul` and can be found [here](https://github.com/will-berg/assignment3/tree/sparse_mul). 
 
 > Manual branch coverage for `pattern_match` is implemented on the [pattern_match_improved_coverage](https://github.com/keon/algorithms/compare/master...will-berg:assignment3:pattern_match_improved_coverage) branch, and the DIY in [pattern_match_diy](https://github.com/keon/algorithms/compare/master...will-berg:assignment3:pattern_match_diy) branch.
-> The branch coverage of the unit tests for the `pattern_match` raised from 92% to 100% with the two added test cases, which was consistent both with manual tool and with the `coverage.py` tool.
+> The branch coverage of the unit tests for the `pattern_match` raised from 90% to 100% with the two added test cases using the `coverage.py` tool, but from ~85% to 100% using manual tools. This could be that I counted more places as branches than the `coverage.py` tool and therefore set out more flags than neccesary.
 
 >Manual branch coverage for `maze_search` is implemented on the [/feature/coverage-maze-search](https://github.com/will-berg/assignment3/commits/feature/coverage-maze-search) and the improve coverage is implemented on [/feature/improve-coverage-maze-search](https://github.com/will-berg/assignment3/commits/feature/improve-coverage-maze-search). The branch coverage for went up from 0.9 to 1.0.
 
