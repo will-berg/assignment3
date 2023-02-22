@@ -26,6 +26,9 @@ def solve_chinese_remainder(nums : List[int], rems : List[int]):
             raise Exception("All numbers in nums needs to be > 1")
     if not _check_coprime(nums):
         raise Exception("All pairs of numbers in nums are not coprime")
+    return _main_loop(nums, rems)
+
+def _main_loop(nums : List[int], rems : List[int]):
     k = len(nums)
     x = 1
     while True:
