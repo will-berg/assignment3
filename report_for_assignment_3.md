@@ -34,9 +34,9 @@ Did it build and run as documented?
    - Are the results clear?
      > Compared to the lizard output the manual result was clear
 2. Are the functions just complex, or also long?
-   > In general the functions with high cyclomatic complexity are long. The reason being that in order to have high CCN the function must contain a certain amount of if statements, loops etc. However, that is not necessarily the case. One line of code could have high CCN but that would be considered bad coding practices.
+> In general the functions with high cyclomatic complexity are long. The reason being that in order to have high CCN the function must contain a certain amount of if statements, loops etc. However, that is not necessarily the case. One line of code could have high CCN but that would be considered bad coding practices.
 3. What is the purpose of the functions?
-   > `count_islands`: `count_islands` takes a grid of 1s (which represent land) and 0s (which represent water) and counts the number of horizontally and/or vertically connected 1s (which represent islands) in the grid. The high CC is mainly due to the program checking all of the different directions when determining if something is an island or not; this leads to if statements with multiple logical AND statements within them.
+> `count_islands`: `count_islands` takes a grid of 1s (which represent land) and 0s (which represent water) and counts the number of horizontally and/or vertically connected 1s (which represent islands) in the grid. The high CC is mainly due to the program checking all of the different directions when determining if something is an island or not; this leads to if statements with multiple logical AND statements within them.
 
 > `maximum_flow_bfs`: The function gives the maximum flow given a NxN matrix. It uses BFS to conduct the search. The high CCN is necessary for the function to perform as expected.
 
@@ -47,11 +47,10 @@ Did it build and run as documented?
 > `solve_chinese_remainder`: Finds the smallest number x that satisfies the equations x mod y1 = z1, x mod y2 = z2, …, etc using the chinese remainder theorem if applicable.
 
 4. Are exceptions taken into account in the given measurements?
-
-   > Exceptions are taken into account when they manually raised.
+> Exceptions are taken into account when they are manually raised in a function. Unexpected exceptions are not taken into account.
 
 5. Is the documentation clear w.r.t. all the possible outcomes?
-   > `count_islands`: The documentation for the `count_islands` function lists 4 examples that illustrate the different outcomes well.
+> `count_islands`: The documentation for the `count_islands` function lists 4 examples that illustrate the different outcomes well.
 
 > `maximum_flow_bfs`: The comments give a clear understanding of what the branch does and the requirements for the code to enter the path.
 
@@ -63,7 +62,7 @@ Did it build and run as documented?
 
 ## 3. DIY & Coverage improvement
 
-> We used arrays initiated in the function that contained X amount of boolean values. When we reached a branch the flag was set to True. The unique ID was the index in the array.
+> We used arrays initiated either as a global variable or outside the function inside the test class, that contained X amount of boolean values (depending on the amount of branches). When we reached a branch the flag was set to True. The unique ID was the index in the array.
 
 > Manual branch coverage for `count_islands` is implemented on the `count_islands` branch [here](https://github.com/will-berg/assignment3/tree/count_islands).
 > The branch coverage of the unit tests for the `count_islands` function is 100%, this result was consistent with the result that we got when using the `coverage.py` tool.
@@ -88,7 +87,7 @@ Did it build and run as documented?
 
 > Manual branch coverage for `intersection` is implemented on the [intersection-diy](https://github.com/will-berg/assignment3/tree/intersection-diy) and improve coverage is implemented on [intersection-coverage](https://github.com/will-berg/assignment3/tree/intersection-coverage). The branch coverage went up from 0.7 to 1.0 before implementing else-statements for each if-statement. After it implementing else-statements the manual branch coverage was ~0.93.
 
-> Manual branch coverage tool for `solve_chinese_remainder` is implemented on branch [issue#9](https://github.com/will-berg/assignment3/tree/issue%239) and the two tests that increases the coverage to 100% on the branch [issue#10](https://github.com/will-berg/assignment3/tree/issue%2310).
+> Manual branch coverage tool for `solve_chinese_remainder` is implemented on branch [issue#9](https://github.com/will-berg/assignment3/tree/issue%239) and the two tests that increases the coverage to 100% on the branch [issue#10](https://github.com/will-berg/assignment3/tree/issue%2310). Note that the "false" branch for the last `while true` loop is not considered since it is unreachable.
 
 1. What is the quality of your own coverage measurement? Does it take into account ternary operators (condition ? yes : no) and exceptions, if available in your language?
 
@@ -146,7 +145,16 @@ What are your main take-aways from this project? What did you learn?
 
 > Forking and working with open source projects.
 
-Is there something special you want to mention here?
+## P+ (Michael Ask)
+> To achieve P+ I have done point 1, 2, and 3 of the P+ list:
+#### 1. Each group member writes at least four new or enhanced unit tests (twice as many as for P).
+> I wrote one test for `bfs word_ladder` located on the branch [issue#7](https://github.com/will-berg/assignment3/tree/issue%237), two tests for `maths solve_chinese_remainder` located on the branch [issue#10](https://github.com/will-berg/assignment3/tree/issue%2310), and one test for `dfs sudoku_solver` located on the branch [issue#21](https://github.com/will-berg/assignment3/tree/issue%2321).
+
+#### 2. You use your issue tracker and systematic commit messages to manage your project.
+> See the commits for the above branches (the branches and commit messages link to the respective issue).
+
+#### 3. You carry out some of Task 3: you refactor at least one of the functions (per group member) with high cyclomatic complexity to reduce it by at least 35 % (for example, by splitting the functions).
+> I refractored the `maths solve_chinese_remainder` function by placing the error checks into its own function that is called before the main algorithm runs. This reduced the complexity of the main `solve_chinese_remainder` function from 10 down to 5. This change is located on branch [issue#20](https://github.com/will-berg/assignment3/tree/issue%2320).
 
 ## Statement of Contributions
 
@@ -154,7 +162,7 @@ Is there something special you want to mention here?
 
 > William Berg: `count_islands` DIY and coverage improvement for `sparse_mul.multiply` (2 tests). Not going for P+.
 
-> Michael Ask: `solve_chinese_remainder` DIY, coverage improvement and complexity reduction refractoring in the file algorithms/maths/chinese_remainder_thereom.py. Added two tests for complete branch coverage and refractored the function from a cyclomatic complexity of 10 down to 5. Going for P+.
+> Michael Ask: DIY and complexity reduction refractoring for `maths solve_chinese_remainder` in the file algorithms/maths/chinese_remainder_thereom.py. Added to four tests that improve branch coverage for `maths solve_chinese_remainder`, `bfs word_ladder`, and `dfs sudoku_solver`. Going for P+ (see the above header).
 
 > Hanna Bjarre: DIY and coverage improvement for `pattern_match` (2 tests). Not going for P+.
 
