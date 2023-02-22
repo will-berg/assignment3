@@ -26,8 +26,8 @@ If grid is
 the answer is: -1
 '''
 
+flags = [False for i in range(10)]
 def maze_search(maze):
-    flags = [False for i in range(10)]
     BLOCKED, ALLOWED = 0, 1
     UNVISITED, VISITED = 0, 1
 
@@ -81,7 +81,7 @@ def maze_search(maze):
                 is_visited[new_x][new_y] = VISITED
             else:
                 flags[9] = True     
-    print(len(list(filter(lambda x:(x == True) ,  flags))) / len(flags))                       
+                  
     print(flags)
     return -1 
 
@@ -102,9 +102,7 @@ if __name__ ==  "__main__":
     print("Coverages for ex3")
     ex3 = [[0,0,0,0], [0,0,0,0],[0,0,0,0],[0,0,0,0]]
     maze_search(ex3)
-    print("Coverages for ex4")
-    ex4 = [[0],[0],[0]]
-    maze_search(ex4)
+    print(len(list(filter(lambda x:(x == True) ,  flags))) / len(flags))       
 
 
 
