@@ -50,6 +50,11 @@ class TestSudoku(unittest.TestCase):
         self.assertEqual([['5', '3', '1'], ['6', '1', '2'],
                          ['1', '9', '8']], test_obj.board)
 
+    def test_sudoku_string(self):
+        board = [["5", "3", "."], ["6", ".", "."], [".", "9", "8"]]
+        test_obj = Sudoku(board, 3, 3)
+        self.assertEqual(" 5  3  . \n 6  .  . \n .  9  8 \n", str(test_obj))
+
 
 class TestWallsAndGates(unittest.TestCase):
     def test_walls_and_gates(self):
